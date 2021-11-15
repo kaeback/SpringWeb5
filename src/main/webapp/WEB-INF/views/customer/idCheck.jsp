@@ -27,7 +27,7 @@ function idSelect(id) {
 <h2>[ ID 중복 확인 ]</h2>
 
 <!-- 검색 폼 -->
-<form action="idCheck" method="post" onsubmit="return formCheck();">
+<form action="idcheck" method="post" onsubmit="return formCheck();">
 	<input type="text" name="searchId" id="searchId" value="${searchId }" placeholder="검색할 ID 입력">
 	<input type="submit" value="검색">
 </form>

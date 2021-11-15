@@ -46,7 +46,7 @@ public class CustomerJoinController {
 	 * @param customer joinForm()에서 생성한 VO객체에 사용자가 입력한 가입정보가 추가된 객체, 세션에 해당 값이 없으면 에러.
 	 */
 	@RequestMapping(value = "join", method = RequestMethod.POST)
-	public String join(@ModelAttribute("customer") Customer customer, Model model) {
+	public String join(/* @ModelAttribute("customer") */ Customer customer, Model model) {
 		int result = dao.insert(customer);
 		
 		if (result != 1) {
@@ -68,6 +68,7 @@ public class CustomerJoinController {
 	public String joinComplete(@ModelAttribute("customer") Customer customer, SessionStatus sessionStatus, Model model) {
 		// 가입 처리된 ID를 모델에 저장
 		model.addAttribute("id", customer.getCustid());
+		sessionStatus.setComplete();
 		
 		return "customer/joinComplete";
 	}
@@ -75,19 +76,19 @@ public class CustomerJoinController {
 	/**
 	 * ID 중복 확인 폼 보기
 	 */
-	@RequestMapping(value = "idCheck", method = RequestMethod.GET)
+	@RequestMapping(value = "idcheck", method = RequestMethod.GET)
 	public String idCheck(Model model) {
 		// 검색 전후 확인용
 		model.addAttribute("search", false);
 		
-		return "customer/idCheck";
+		return "customer/idcheck";
 	}
 	
 	/**
 	 * ID 중복 검사
 	 */
-	
-	public String idCheck(String searchId, Model model) {
+	@RequestMapping(value = "idcheck", method = RequestMethod.POST)
+	public String idcheck(String searchId, Model model) {
 		// ID 검색
 		Customer c = dao.get(searchId);
 		
@@ -96,6 +97,6 @@ public class CustomerJoinController {
 		model.addAttribute("searchResult", c);
 		model.addAttribute("search", true);
 		
-		return "customer/idCheck";
+		return "customer/idcheck";
 	}
 }

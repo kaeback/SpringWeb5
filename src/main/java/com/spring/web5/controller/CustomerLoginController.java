@@ -62,6 +62,10 @@ public class CustomerLoginController {
 		}
 	}
 	
+	/**
+	 * 로그아웃 처리
+	 * @param session HttpSession 객체
+	 */
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();

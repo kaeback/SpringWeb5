@@ -11,7 +11,7 @@
 <h1>[ SpringWeb5 ]</h1>
 
 <c:if test="${loginId != null }">
-	${sessionScope.loginName }(${sessinScope.loginId })님 로그인 중<br>
+	${sessionScope.loginName }(${sessionScope.loginId })님 로그인 중<br>
 </c:if>
 
 <c:if test="${lognId == null }">

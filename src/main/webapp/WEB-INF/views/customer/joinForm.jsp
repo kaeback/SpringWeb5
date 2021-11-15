@@ -69,7 +69,7 @@ function idcheckOpen() {
 			<th>ID</th>
 			<td>
 				<input type="text" name="custid" id="custid" maxlength="10" placeholder="ID 중복확인 이용" readonly="readonly" value="${customer.custid }" />
-				<input type="button" value="ID 중복확인" onclick="idCheckOpen()">
+				<input type="button" value="ID 중복확인" onclick="idcheckOpen()">
 			</td>
 		<tr>
 			<th>비밀번호</th>
@@ -80,7 +80,7 @@ function idcheckOpen() {
 		</tr>
 		<tr>
 			<th>이름</th>
-			<td><input type="text" nam="name" id="name" placeholder="이름 입력" value="${customer.name }"></td>
+			<td><input type="text" name="name" id="name" placeholder="이름 입력" value="${customer.name }"></td>
 		</tr>
 		<tr>
 			<th>이메일</th>
