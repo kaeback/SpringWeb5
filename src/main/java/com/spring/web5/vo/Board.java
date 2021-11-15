@@ -8,12 +8,12 @@ public class Board {
 	private String inputdate;
 	private int hits;
 	private String originalfile;
-	private String savefile;
+	private String savedfile;
 	
 	public Board() {}
 
 	public Board(int boardnum, String id, String title, String content, String inputdate, int hits, String originalfile,
-			String savefile) {
+			String savedfile) {
 		super();
 		this.boardnum = boardnum;
 		this.id = id;
@@ -22,7 +22,7 @@ public class Board {
 		this.inputdate = inputdate;
 		this.hits = hits;
 		this.originalfile = originalfile;
-		this.savefile = savefile;
+		this.savedfile = savedfile;
 	}
 
 	public int getBoardnum() {
@@ -81,19 +81,19 @@ public class Board {
 		this.originalfile = originalfile;
 	}
 
-	public String getSavefile() {
-		return savefile;
+	public String getSavedfile() {
+		return savedfile;
 	}
 
-	public void setSavefile(String savefile) {
-		this.savefile = savefile;
+	public void setSavedfile(String savedfile) {
+		this.savedfile = savedfile;
 	}
 
 	@Override
 	public String toString() {
 		return "Board [boardnum=" + boardnum + ", id=" + id + ", title=" + title + ", content=" + content
-				+ ", inputdate=" + inputdate + ", hits=" + hits + ", originalfile=" + originalfile + ", savefile="
-				+ savefile + "]";
+				+ ", inputdate=" + inputdate + ", hits=" + hits + ", originalfile=" + originalfile + ", savedfile="
+				+ savedfile + "]";
 	}
 	
 }

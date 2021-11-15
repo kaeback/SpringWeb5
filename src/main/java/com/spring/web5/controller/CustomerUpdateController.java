@@ -52,6 +52,7 @@ public class CustomerUpdateController {
 	 */
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(@ModelAttribute("customer") Customer customer, Model model) {
+		logger.debug("customer : {}", customer);
 		int result = dao.update(customer);
 		if (result != 1) {
 			// DB update에 실패한 경우 alert() 출력용 메시지를 모델에 저장
@@ -68,7 +69,7 @@ public class CustomerUpdateController {
 	 * @param customer DB에 최종 저장된 정보
 	 * @param sessionStatus @sessionAttributes에서 저징한 이름을 세션에서 삭제하기 위해 사용
 	 */
-	
+	@RequestMapping(value = "updateComplete", method = RequestMethod.GET)
 	public String updateComplete(@ModelAttribute("customer") Customer customer, SessionStatus sessionStatus, Model model) {
 		// 수정 처리된 정보를 모델에 저장
 		model.addAttribute("result", customer);
