@@ -68,7 +68,7 @@
 </select>
 
 <!-- 현재 페이지 목록 (검색 필터링 후) -->
-<select id="listboard" parameterType="string" resultType="board">
+<select id="listBoard" parameterType="string" resultType="board">
 	select
 		boardnum
 		, id

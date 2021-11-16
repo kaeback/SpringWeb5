@@ -77,7 +77,7 @@ public class CustomerJoinController {
 	 * ID 중복 확인 폼 보기
 	 */
 	@RequestMapping(value = "idcheck", method = RequestMethod.GET)
-	public String idCheck(Model model) {
+	public String idcheck(Model model) {
 		// 검색 전후 확인용
 		model.addAttribute("search", false);
 		
