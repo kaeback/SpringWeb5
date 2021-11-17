@@ -11,9 +11,9 @@
 		, id
 		, title
 		, content
-		<if test="originalfile != null and savefile != null">
+		<if test="originalfile != null and savedfile != null">
 		, originalfile
-		, savefile
+		, savedfile
 		</if>
 	)
 	values (
@@ -21,9 +21,9 @@
 		, #{id}
 		, #{title}
 		, #{content}
-		<if test="originalfile != null and savefile != null">
+		<if test="originalfile != null and savedfile != null">
 		, #{originalfile}
-		, #{savefile}
+		, #{savedfile}
 		</if>
 	)
 </insert>
@@ -38,7 +38,7 @@
 		, to_char(inputdate, 'YYYY-MM-DD HH24:MI:SS') inputdate
 		, hits
 		, originalfile
-		, savefile
+		, savedfile
 	from
 		board3
 	where 
@@ -101,15 +101,15 @@
 	set
 		title = #{title}
 		, content = #{content}
-		<if test="originalfile != null and savefile != null">
+		<if test="originalfile != null and savedfile != null">
 		, originalfile = #{originalfile}
-		, savefile = #{savefile}
+		, savedfile = #{savedfile}
 		</if>
 </update>
 
 <!-- 리플 저장 -->
 <insert id="insertReply" parameterType="reply">
-	insert into reply3 )
+	insert into reply3 (
 		replynum
 		, boardnum
 		, id
@@ -144,7 +144,7 @@
 	from 
 		reply3
 	where 
-		boradnum #{boardnum}
+		boardnum = #{boardnum}
 	order by replynum desc
 </select>
 

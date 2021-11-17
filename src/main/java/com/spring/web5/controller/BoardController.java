@@ -249,7 +249,7 @@ public class BoardController {
 	 * 리플 저장 처리
 	 * @param reply 사용자가 입력한 글 내용
 	 */
-	@RequestMapping(value = "replywrite", method = RequestMethod.GET)
+	@RequestMapping(value = "replyWrite", method = RequestMethod.POST)
 	public String replyWrite(Reply reply, HttpSession session, Model model) {
 		// 세션에서 로그인한 사용자의 아이디를 읽어서 Reply 객체의 작성자 정보에 세팅
 		String id = (String)session.getAttribute("loginId");
@@ -267,7 +267,7 @@ public class BoardController {
 	 * 리플 삭제
 	 * @param reply 삭제할 리플 번호와 본문 글번호가 전달
 	 */
-	@RequestMapping(value = "replydelete", method = RequestMethod.GET)
+	@RequestMapping(value = "replyDelete", method = RequestMethod.GET)
 	public String deleteReply(Reply reply, HttpSession session) {
 		String id = (String)session.getAttribute("loginId");
 		

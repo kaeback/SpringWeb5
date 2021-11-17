@@ -38,13 +38,13 @@ public class PageNavigator {
 		currentPage = (currentPage - 1) / pagePerGroup;
 		
 		// 현재 그룹의 첫 페이지
-		startPageGroup = currentPage * pagePerGroup + 1;
+		startPageGroup = currentGroup * pagePerGroup + 1;
 		
 		// 현재 그룹의 첫 페이지가 1보다 작으면 1로 처리
 		startPageGroup = startPageGroup < 1 ? 1 : startPageGroup;
 		
 		// 현재 그룹의 마지막 페이지
-		endPageGroup = startPageGroup + pagePerGroup + 1;
+		endPageGroup = startPageGroup + pagePerGroup - 1;
 		
 		// 현재 그룹의 마지막 페이지가 전체 페이지 수 보다 작으면 전체 페이지의 수를 마지막으로
 		endPageGroup = endPageGroup < totalPageCount ? endPageGroup : totalPageCount;
