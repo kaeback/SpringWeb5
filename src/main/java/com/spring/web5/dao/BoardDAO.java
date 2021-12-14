@@ -1,11 +1,14 @@
 package com.spring.web5.dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.web5.vo.Board;
@@ -15,6 +18,7 @@ import com.spring.web5.vo.Reply;
  * 게시판 관련 DAO
  */
 @Repository
+@EnableTransactionManagement
 public class BoardDAO {
 
 	@Autowired
@@ -42,14 +46,18 @@ public class BoardDAO {
 	 * @param boardnum 검색할 글번호
 	 * @return 검색된 게시글 정보. 없으면 null
 	 */
+	@Transactional
 	public Board get(int boardnum) {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		
 		// 해당 번호의 글 정보 읽기
 		Board board = mapper.getBoard(boardnum);
-		
+						
 		// 조회수 1 증가
 		mapper.addHits(boardnum);
+		
+		// unchecked 예외가 발생하면 롤백 된다.
+		if (board != null) throw new RuntimeException();
 		
 		return board;
 	}
